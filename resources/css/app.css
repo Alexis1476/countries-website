@@ -116,9 +116,9 @@ input, select {
 }
 
 .country-card {
-    min-width: 15rem;
-    max-height: 22rem;
-    max-width: 18rem;
+    min-width: 20rem;
+    max-height: 23rem;
+    max-width: 20rem;
     background: white;
     color: black;
     overflow: hidden;
@@ -151,4 +151,5 @@ input, select {
 
 .card-body p {
     margin: .6rem 0;
+    font-size: 0.9rem;
 }

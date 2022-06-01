@@ -34,7 +34,7 @@ function displayCountries(countries) {
         // Met les languages dans un string
         let languages = '';
         for (let key in country.languages) {
-            languages += '- ' + country.languages[key] + ' ';
+            languages += '-' + country.languages[key] + ' ';
         }
 
         let htmlSegment =
