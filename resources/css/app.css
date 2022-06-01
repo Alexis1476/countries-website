@@ -118,6 +118,7 @@ input, select {
 .country-card {
     min-width: 15rem;
     max-height: 22rem;
+    max-width: 18rem;
     background: white;
     color: black;
     overflow: hidden;
@@ -130,6 +131,7 @@ input, select {
     width: 100%;
     min-width: 100%;
     height: 40%;
+    box-shadow: 0 3px 2px 0 gray;
 }
 
 .card-title {
