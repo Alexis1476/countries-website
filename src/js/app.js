@@ -10,7 +10,7 @@ async function getCountries(url) {
 
 async function search(object) {
     if (event.key === 'Enter') {
-        let url = `https://restcountries.com/v3.1/translation/${object.value}?fields=name,capital,languages,continents,population,flags`;
+        let url = `https://restcountries.com/v3.1/name/${object.value}?fields=name,capital,languages,continents,population,flags`;
         let countries = await getCountries(url);
         displayCountries(countries);
     }
@@ -24,6 +24,11 @@ async function getAllCountries() {
 
 function displayCountries(countries) {
     let html = '';
+
+    // Trie les pays par ordre alphabétique
+    countries.sort(function (a,b){
+        return a.name.common.localeCompare(b.name.common);
+    });
 
     countries.forEach(country => {
         // Met les languages dans un string
@@ -50,4 +55,5 @@ function displayCountries(countries) {
     let container = document.querySelector('#countries-section');
     container.innerHTML = html;
 }
+
 getAllCountries();
