@@ -10,14 +10,14 @@ async function getCountries(url) {
 
 async function search(object) {
     if (event.key === 'Enter') {
-        let url = `https://restcountries.com/v3.1/translation/${object.value}?fullText=true`;
+        let url = `https://restcountries.com/v3.1/translation/${object.value}?fields=name,capital,languages,continents,population,flags`;
         let countries = await getCountries(url);
         displayCountries(countries);
     }
 }
 
 async function getAllCountries() {
-    let url = 'https://restcountries.com/v3.1/all';
+    let url = 'https://restcountries.com/v3.1/all?fields=name,capital,languages,continents,population,flags';
     let countries = await getCountries(url);
     displayCountries(countries);
 }
