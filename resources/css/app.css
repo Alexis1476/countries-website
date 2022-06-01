@@ -117,7 +117,7 @@ input, select {
 
 .country-card {
     min-width: 15rem;
-    max-height: 25rem;
+    max-height: 22rem;
     background: white;
     color: black;
     overflow: hidden;
@@ -139,6 +139,7 @@ input, select {
     background: var(--main-color);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin: 0.5rem 0 1rem 0;
 }
 
 .card-body {
