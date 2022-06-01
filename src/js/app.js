@@ -1,38 +1,53 @@
-let urlApi = "https://restcountries.com/v3.1/translation/suisse?fullText=true";
-
 /*Evénement pour le champ de recherche*/
-function search(object) {
-    if (event.key === 'Enter') {
-        urlApi = `https://restcountries.com/v3.1/translation/${object.value}?fullText=true`;
-        getCountries();
-    }
-}
-
-function getCountries() {
+async function getCountries(url) {
     try {
-        fetch(urlApi).then(res => {
-            if (res.ok) {
-                res.json().then(
-                    countries => countries.forEach(
-                        country => renderCountry(country)
-                    )
-                );
-            } else {
-                console.log("Error")
-            }
-        })
+        let res = await fetch(url);
+        return await res.json();
     } catch (error) {
-        console.log("Error")
+        console.log(error);
     }
 }
 
-function renderCountry(country) {
+async function search(object) {
+    if (event.key === 'Enter') {
+        let url = `https://restcountries.com/v3.1/translation/${object.value}?fullText=true`;
+        let countries = await getCountries(url);
+        displayCountries(countries);
+    }
+}
+
+async function getAllCountries() {
+    let url = 'https://restcountries.com/v3.1/all';
+    let countries = await getCountries(url);
+    displayCountries(countries);
+}
+
+function displayCountries(countries) {
     let html = '';
 
-    console.log(country);
-    let htmlSegment = `<p>${country.capital} ${country.continents}</p>`;
-    html += htmlSegment;
+    countries.forEach(country => {
+        // Met les languages dans un string
+        let languages = '';
+        for (let key in country.languages) {
+            languages += '- ' + country.languages[key] + ' ';
+        }
 
-    let countriesSection = document.querySelector('#countries-section');
-    countriesSection.innerHTML = html;
+        let htmlSegment =
+            `<div class="country-card">
+            <img src="${country.flags.png}" alt="Drapeau">
+            <p class="card-title">${country.name.common}</p>
+            <div class="card-body">
+                <p><strong>Continent : </strong>${country.continents}</p>
+                <p><strong>Capitale : </strong>${country.capital}</p>
+                <p><strong>Langues : </strong>${languages}</p>
+                <p><strong>Population : </strong>${country.population.toLocaleString()}</p>
+            </div>
+        </div>`;
+
+        html += htmlSegment;
+    });
+
+    let container = document.querySelector('#countries-section');
+    container.innerHTML = html;
 }
+getAllCountries();
