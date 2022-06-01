@@ -3,6 +3,10 @@
     src: url("https://fonts.googleapis.com/css?family=Montserrat");
 }
 
+:root {
+    --main-color: linear-gradient(90deg, rgba(23, 156, 214, 1) 0%, rgba(44, 201, 163, 1) 100%);
+}
+
 html {
     width: 100%;
     min-height: 100%;
@@ -14,7 +18,7 @@ body {
     height: 100%;
     flex-direction: column;
     background: rgb(23, 156, 214);
-    background: linear-gradient(90deg, rgba(23, 156, 214, 1) 0%, rgba(44, 201, 163, 1) 100%);
+    background: var(--main-color);
     color: white;
     font-family: Montserrat, sans-serif;
     margin: 0;
@@ -45,11 +49,44 @@ nav a:hover {
     text-decoration-color: inherit;
 }
 
+
 main {
     flex-grow: 1;
+    margin: 1rem 12rem;
+}
+
+#search-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+#search-section input, .custom-select {
+    font-size: 1.4rem;
+    height: 1.5em;
+    padding-left: 2.5em;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container svg {
+    position: absolute;
+    left: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#selects {
+    display: flex;
 }
 
 footer {
     text-align: center;
     padding: 1.5rem;
+}
+
+input, select {
+    border-radius: 0.8rem;
+    border: var(--main-color);
 }

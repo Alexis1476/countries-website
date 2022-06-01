@@ -26,11 +26,42 @@
         </svg>
     </a>
 </header>
-<section>
-    <!--Search-->
-</section>
 <main>
+    <section id="search-section">
+        <div class="input-container">
+            <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M10.2554 2C6.15834 2 2.83697 5.13401 2.83697 9C2.83697 12.866 6.15834 16 10.2554 16C12.2541 16 14.0682 15.2542 15.4022 14.0414C15.4301 14.0072 15.4606 13.9742 15.4938 13.9429C15.5271 13.9115 15.5619 13.8827 15.5982 13.8564C16.8835 12.5977 17.6739 10.8859 17.6739 9C17.6739 5.13401 14.3526 2 10.2554 2ZM17.7077 14.6177C19.013 13.078 19.7935 11.125 19.7935 9C19.7935 4.02944 15.5232 0 10.2554 0C4.98773 0 0.717407 4.02944 0.717407 9C0.717407 13.9706 4.98773 18 10.2554 18C12.5075 18 14.5773 17.2635 16.209 16.0319L20.1039 19.7071C20.5178 20.0976 21.1888 20.0976 21.6027 19.7071C22.0165 19.3166 22.0165 18.6834 21.6027 18.2929L17.7077 14.6177Z"
+                      fill="url(#paint0_radial_5_64)"/>
+                <defs>
+                    <radialGradient id="paint0_radial_5_64" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                                    gradientTransform="translate(21.9131 10.0005) rotate(-179.999) scale(21.1957 7372.8)">
+                        <stop stop-color="#2CC9A3"/>
+                        <stop offset="1" stop-color="#179CD6"/>
+                    </radialGradient>
+                </defs>
+            </svg>
+            <label for="country-name" style="display: none"></label>
+            <input name="country-name" id="country-name" type="text" placeholder="Nom du pays">
+        </div>
+        <div id="selects">
+            <div class="custom-select">
+                <label for="continent" style="display: none"></label>
+                <select name="continent" id="continent">
+                    <option value="Europe">Europe</option>
+                </select>
+            </div>
+            <div class="custom-select">
+                <label for="language" style="display: none"></label>
+                <select name="language" id="language">
+                    <option value="Français">Français</option>
+                </select>
+            </div>
+        </div>
+    </section>
+    <section id="countries-section">
 
+    </section>
 </main>
 <footer>© Copyright Alexis Rojas | ETML</footer>
 </body>
