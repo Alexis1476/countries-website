@@ -1,8 +1,3 @@
-@font-face {
-    font-family: "Montserrat";
-    src: url("https://fonts.googleapis.com/css?family=Montserrat");
-}
-
 :root {
     --main-color: linear-gradient(90deg, rgba(23, 156, 214, 1) 0%, rgba(44, 201, 163, 1) 100%);
     --border-radius: 0.8rem;
@@ -21,7 +16,7 @@ body {
     background: rgb(23, 156, 214);
     background: var(--main-color);
     color: white;
-    font-family: Montserrat, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
 }
 
@@ -37,7 +32,7 @@ nav li {
     list-style: none;
     margin-right: 3rem;
     font-size: 1.2rem;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 nav a {
@@ -63,25 +58,28 @@ main {
     justify-content: space-between;
 }
 
-#search-section input, .custom-select {
-    font-size: 1.4rem;
-    height: 1.5em;
-    padding-left: 2.5em;
+.input-container, .custom-select {
+    background: white;
+    height: 2rem;
+    padding: 0 .8rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.8rem;
+    position: relative;
+    margin: 0 1rem;
 }
 
-.input-container {
-    position: relative;
+.input-container input {
+    margin-left: 1rem;
 }
 
 .input-container svg {
-    position: absolute;
-    left: 0.5em;
-    top: 50%;
-    transform: translateY(-50%);
+    position: relative;
 }
 
 #selects {
     display: flex;
+    justify-content: space-between;
 }
 
 footer {
@@ -91,7 +89,7 @@ footer {
 
 input, select {
     border-radius: var(--border-radius);
-    border: var(--main-color);
+    border: none;
 }
 
 /* Card-Style */
@@ -116,9 +114,9 @@ input, select {
 }
 
 .country-card {
-    min-width: 20rem;
+    min-width: 17rem;
     max-height: 23rem;
-    max-width: 20rem;
+    max-width: 17rem;
     background: white;
     color: black;
     overflow: hidden;
@@ -137,7 +135,7 @@ input, select {
 .card-title {
     font-size: 1.5em;
     text-align: center;
-    font-weight: 900;
+    font-weight: bold;
     background: var(--main-color);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
