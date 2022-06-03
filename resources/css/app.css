@@ -91,7 +91,7 @@ footer {
 
 input, select {
     border-radius: var(--border-radius);
-    border: var(--main-color);
+    border: none;
 }
 
 /* Card-Style */
