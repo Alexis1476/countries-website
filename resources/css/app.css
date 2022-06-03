@@ -58,25 +58,28 @@ main {
     justify-content: space-between;
 }
 
-#search-section input, .custom-select {
-    font-size: 1.4rem;
-    height: 1.5em;
-    padding-left: 2.5em;
+.input-container, .custom-select {
+    background: white;
+    height: 2rem;
+    padding: 0 .8rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.8rem;
+    position: relative;
+    margin: 0 1rem;
 }
 
-.input-container {
-    position: relative;
+.input-container input {
+    margin-left: 1rem;
 }
 
 .input-container svg {
-    position: absolute;
-    left: 0.5em;
-    top: 50%;
-    transform: translateY(-50%);
+    position: relative;
 }
 
 #selects {
     display: flex;
+    justify-content: space-between;
 }
 
 footer {
