@@ -70,7 +70,6 @@ function displayCountries(countries) {
     countries.sort(function (a, b) {
         return a.name.common.localeCompare(b.name.common);
     });
-    console.log(countries);
     countries.forEach(country => {
         // Met les languages dans un string
         let languages = '';
