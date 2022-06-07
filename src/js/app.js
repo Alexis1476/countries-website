@@ -18,17 +18,13 @@ async function search() {
     if (event.key === 'Enter' && nameInput.value !== '' && isNaN(nameInput.value)) {
         let url = `https://restcountries.com/v3.1/translation/${nameInput.value}?fields=name,capital,languages,region,population,flags`;
         let countries = await getCountries(url);
+
         if (continentSelect.value !== '0') {
             countries = countries.filter(country => country.region === continentSelect.value);
         }
-        /*if (languageSelect.value !== '0') {
-            countries = countries.filter(country => {
-                if(country.languages.contains(languageSelect.value)){
-                    console.log(country);
-                }
-            });
-        }*/
-        console.log(countries);
+        if (languageSelect.value !== '0') {
+            countries = countries.filter(country => JSON.stringify(country.languages).includes(languageSelect.value));
+        }
         displayCountries(countries);
     }
 }
