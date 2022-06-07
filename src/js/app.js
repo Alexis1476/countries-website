@@ -16,8 +16,7 @@ async function getCountries(url) {
 
 async function search() {
     if (event.key === 'Enter' && isAWord(nameInput.value)) {
-        let countries = await updateResults();
-        displayCountries(countries);
+        await updateResults();
     }
 }
 
@@ -37,6 +36,8 @@ async function updateResults() {
     }
 
     countries = await getCountries(url);
+
+    // Vérification des listes déroulantes pour filtrer les résultats
     if (continentSelect.value !== '0') {
         countries = countries.filter(country => country.region === continentSelect.value);
     }
@@ -69,7 +70,7 @@ function displayCountries(countries) {
     countries.sort(function (a, b) {
         return a.name.common.localeCompare(b.name.common);
     });
-
+    console.log(countries);
     countries.forEach(country => {
         // Met les languages dans un string
         let languages = '';
