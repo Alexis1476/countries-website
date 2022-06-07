@@ -51,18 +51,6 @@ async function getAllCountries() {
     await updateResults();
 }
 
-async function changeContinent() {
-    if (continentSelect.value !== '0') {
-        await updateResults();
-    }
-}
-
-async function changeLanguage() {
-    if (languageSelect.value !== '0') {
-        await updateResults();
-    }
-}
-
 function displayCountries(countries) {
     let html = '';
 
