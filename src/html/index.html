@@ -37,7 +37,6 @@
                 <defs>
                     <radialGradient id="paint0_radial_5_64" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
                                     gradientTransform="translate(21.9131 10.0005) rotate(-179.999) scale(21.1957 7372.8)">
-                        <stop stop-color="#2CC9A3"/>
                         <stop offset="1" stop-color="#179CD6"/>
                     </radialGradient>
                 </defs>
@@ -48,14 +47,25 @@
         <div id="selects">
             <div class="custom-select">
                 <label for="continent" style="display: none"></label>
-                <select name="continent" id="continent">
+                <select name="continent" id="continent" onchange="changeContinent()">
+                    <option value="0">Continent</option>
+                    <option value="Americas">Americas</option>
                     <option value="Europe">Europe</option>
+                    <option value="Oceania">Oceania</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Africa">Africa</option>
                 </select>
             </div>
             <div class="custom-select">
                 <label for="language" style="display: none"></label>
-                <select name="language" id="language">
-                    <option value="Français">Français</option>
+                <select name="language" id="language" onchange="changeLanguage()">
+                    <option value="0">Language</option>
+                    <option value="English">English</option>
+                    <option value="French">French</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="German">German</option>
+                    <option value="Portuguese">Portuguese</option>
+                    <option value="Arabic">Arabic</option>
                 </select>
             </div>
         </div>

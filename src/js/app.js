@@ -10,7 +10,7 @@ async function getCountries(url) {
 
 async function search(object) {
     if (event.key === 'Enter') {
-        let url = `https://restcountries.com/v3.1/name/${object.value}?fields=name,capital,languages,continents,population,flags`;
+        let url = `https://restcountries.com/v3.1/translation/${object.value}?fields=name,capital,languages,continents,population,flags`;
         let countries = await getCountries(url);
         displayCountries(countries);
     }
@@ -26,7 +26,7 @@ function displayCountries(countries) {
     let html = '';
 
     // Trie les pays par ordre alphabétique
-    countries.sort(function (a,b){
+    countries.sort(function (a, b) {
         return a.name.common.localeCompare(b.name.common);
     });
 
@@ -54,6 +54,25 @@ function displayCountries(countries) {
 
     let container = document.querySelector('#countries-section');
     container.innerHTML = html;
+}
+
+async function changeContinent() {
+    let select = document.getElementById("continent");
+
+    if(select.value !== '0'){
+        let url = `https://restcountries.com/v3.1/region/${select.value}?fields=name,capital,languages,continents,population,flags`;
+        let countries = await getCountries(url);
+        displayCountries(countries);
+    }
+}
+
+async function changeLanguage() {
+    let select = document.getElementById("language");
+    if(select.value !== '0'){
+        let url = `https://restcountries.com/v3.1/lang/${select.value}?fields=name,capital,languages,continents,population,flags`;
+        let countries = await getCountries(url);
+        displayCountries(countries);
+    }
 }
 
 getAllCountries();
