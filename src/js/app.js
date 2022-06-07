@@ -17,7 +17,7 @@ async function search(object) {
 }
 
 async function getAllCountries() {
-    let url = 'https://restcountries.com/v3.1/all?fields=name,capital,languages,continents,population,flags';
+    let url = 'https://restcountries.com/v3.1/all?fields=name,capital,languages,region,population,flags';
     let countries = await getCountries(url);
     displayCountries(countries);
 }
@@ -42,7 +42,7 @@ function displayCountries(countries) {
             <img src="${country.flags.png}" alt="Drapeau">
             <p class="card-title">${country.name.common}</p>
             <div class="card-body">
-                <p><strong>Continent : </strong>${country.continents}</p>
+                <p><strong>Continent : </strong>${country.region}</p>
                 <p><strong>Capitale : </strong>${country.capital}</p>
                 <p><strong>Langues : </strong>${languages}</p>
                 <p><strong>Population : </strong>${country.population.toLocaleString()}</p>
@@ -60,7 +60,7 @@ async function changeContinent() {
     let select = document.getElementById("continent");
 
     if(select.value !== '0'){
-        let url = `https://restcountries.com/v3.1/region/${select.value}?fields=name,capital,languages,continents,population,flags`;
+        let url = `https://restcountries.com/v3.1/region/${select.value}?fields=name,capital,languages,region,population,flags`;
         let countries = await getCountries(url);
         displayCountries(countries);
     }
@@ -69,8 +69,12 @@ async function changeContinent() {
 async function changeLanguage() {
     let select = document.getElementById("language");
     if(select.value !== '0'){
-        let url = `https://restcountries.com/v3.1/lang/${select.value}?fields=name,capital,languages,continents,population,flags`;
+        let url = `https://restcountries.com/v3.1/lang/${select.value}?fields=name,capital,languages,region,population,flags`;
         let countries = await getCountries(url);
+        /*countries.filter(function (a, index){
+            return n.continent
+        })
+        console.log(countries);*/
         displayCountries(countries);
     }
 }
