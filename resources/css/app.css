@@ -41,6 +41,10 @@ nav a {
     transition: text-decoration-color 300ms;
 }
 
+.is-active {
+    text-decoration: underline 0.15em;
+}
+
 nav a:hover {
     text-decoration-color: inherit;
 }
