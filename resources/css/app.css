@@ -73,10 +73,12 @@ main {
     border-radius: 0.8rem;
     position: relative;
     margin: 0 1rem;
+    justify-content: space-between;
 }
 
 .input-container input {
     margin-left: 1rem;
+    width: 100%;
 }
 
 .input-container svg {
