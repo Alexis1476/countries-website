@@ -1,15 +1,18 @@
 let timerSpan = document.getElementById('timer');
+let correctAnswersSpan = document.getElementById('correct-answers');
+let currentAnswerSpan = document.getElementById('current-answer');
 let nameCountry = document.getElementById('game-country-name');
 let flagCountry = document.getElementById('country-flag');
 let inputCapital = document.getElementById('country-capital');
 const TIMETOANSWER = 15; // Temps de réponse par question
+const NBANSWERS = 15;
 let time = TIMETOANSWER;
 let countriesToFind;
 let currentCountry;
-let nbCorrectAnswers;
-let nbCurrentAnswer;
+let nbCorrectAnswers = 0;
+let nbCurrentAnswer = 1;
 
-inputCapital.addEventListener('keydown', checkAnswer);
+inputCapital.addEventListener('keydown', submitAnswer);
 
 const decreaseTime = () => {
     // Changement de couleur et de secondes
@@ -27,21 +30,32 @@ const decreaseTime = () => {
     }
 }
 
-function checkAnswer() {
+function submitAnswer() {
     if (event.key === 'Enter' && isAWord(inputCapital.value)) {
-        console.log(currentCountry.capital[0]);
-        // Si réponse correcte
-        if (inputCapital.value.localeCompare(currentCountry.capital[0], undefined, {sensitivity: 'base'}) === 0) {
-            console.log('Ok');
-        } else {
-            console.log('Ko');
-        }
+        checkAnswer();
     }
+}
+
+function checkAnswer() {
+    console.log(currentCountry.capital[0]);
+    // Si réponse correcte
+    if (inputCapital.value.localeCompare(currentCountry.capital[0], undefined, {sensitivity: 'base'}) === 0) {
+        nbCurrentAnswer++;
+        nbCorrectAnswers++;
+    } else {
+        nbCurrentAnswer++;
+    }
+    updateCounters();
 }
 
 // TODO : Function repetée
 function isAWord(string) {
     return string.match(/^\D+$/);
+}
+
+function updateCounters() {
+    currentAnswerSpan.innerText = `${nbCurrentAnswer} / ${NBANSWERS}`;
+    correctAnswersSpan.innerText = `${nbCorrectAnswers} / ${NBANSWERS}`;
 }
 
 function changeColor(timer) {
@@ -67,6 +81,7 @@ async function initGame() {
     let url = 'https://restcountries.com/v3.1/all?fields=name,capital,flags';
     countriesToFind = await getCountries(url);
     updateCountry();
+    updateCounters();
 }
 
 function updateCountry() {
