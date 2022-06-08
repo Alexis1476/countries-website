@@ -24,7 +24,20 @@ const decreaseTime = () => {
 }
 
 function checkAnswer() {
+    if (event.key === 'Enter' && isAWord(inputCapital.value)) {
+        console.log(currentCountry.capital[0]);
+        // Si réponse correcte
+        if (inputCapital.value.toLowerCase() === currentCountry.capital[0].toLowerCase()) {
+            console.log('Ok');
+        } else {
+            console.log('Ko');
+        }
+    }
+}
 
+// TODO : Function repetée
+function isAWord(string) {
+    return string.match(/^\D+$/);
 }
 
 function changeColor(timer) {
