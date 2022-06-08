@@ -36,7 +36,6 @@ function submitAnswer() {
 }
 
 function checkAnswer() {
-    console.log(currentCountry.capital[0]);
     // Si réponse correcte
     if (inputCapital.value.localeCompare(currentCountry.capital[0], undefined, {sensitivity: 'base'}) === 0) {
         nbCurrentAnswer++;
@@ -48,6 +47,7 @@ function checkAnswer() {
 }
 
 function updateUI() {
+    inputCapital.value = '';
     time = TIMETOANSWER;
     updateCountry();
     gameIsOver();
@@ -103,6 +103,7 @@ function updateCountry() {
     currentCountry = countriesToFind[Math.floor(Math.random() * countriesToFind.length)];
     flagCountry.setAttribute('src', currentCountry.flags.png)
     nameCountry.innerText = currentCountry.name.common;
+    console.log(currentCountry.capital);
 }
 
 initGame();
