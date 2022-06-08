@@ -23,8 +23,7 @@ const decreaseTime = () => {
     if (time <= 0) {
         time = TIMETOANSWER;
         // TODO: Afficher réponse correcte si incorrect
-        /*inputCapital.value = currentCountry.capital;*/
-        updateCountry();
+        checkAnswer();
     } else {
         time--;
     }
@@ -45,7 +44,22 @@ function checkAnswer() {
     } else {
         nbCurrentAnswer++;
     }
+    updateUI();
+}
+
+function updateUI() {
+    time = TIMETOANSWER;
+    updateCountry();
+    gameIsOver();
     updateCounters();
+}
+
+function gameIsOver() {
+    if (nbCurrentAnswer === NBANSWERS) {
+        nbCorrectAnswers = 0;
+        nbCurrentAnswer = 1;
+        time = TIMETOANSWER;
+    }
 }
 
 // TODO : Function repetée
