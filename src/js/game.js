@@ -14,3 +14,23 @@ const decreaseTime = () => {
 }
 
 setInterval(decreaseTime, 1000);
+
+async function getCountries(url) {
+    try {
+        let res = await fetch(url);
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function initGame() {
+    let url = 'https://restcountries.com/v3.1/all?fields=name,capital,flags';
+    let countries = await getCountries(url);
+    currentCountry = countries[Math.floor(Math.random() * countries.length)];
+    // Changer le pays
+    flagCountry.setAttribute('src', currentCountry.flags.png)
+    nameCountry.innerText = currentCountry.name.common;
+}
+
+initGame();
