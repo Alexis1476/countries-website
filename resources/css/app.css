@@ -201,3 +201,11 @@ input, select {
     margin: 0;
     font-size: 1.2rem;
 }
+
+.correct-answers-div {
+    display: flex;
+}
+
+.correct-answers-div > svg {
+    margin-right: 0.5rem;
+}
