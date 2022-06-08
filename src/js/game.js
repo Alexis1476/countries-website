@@ -1,11 +1,13 @@
 let timerSpan = document.getElementById('timer');
 let nameCountry = document.getElementById('game-country-name');
 let flagCountry = document.getElementById('country-flag');
-const TIMETOANSWER = 3; // Temps de réponse par question
+let inputCapital = document.getElementById('country-capital');
+const TIMETOANSWER = 15; // Temps de réponse par question
 let time = TIMETOANSWER;
 let countriesToFind;
 let currentCountry;
 
+inputCapital.addEventListener('keydown', checkAnswer);
 
 const decreaseTime = () => {
     // Changement de couleur et de secondes
@@ -19,6 +21,10 @@ const decreaseTime = () => {
     } else {
         time--;
     }
+}
+
+function checkAnswer() {
+
 }
 
 function changeColor(timer) {
