@@ -6,6 +6,8 @@ const TIMETOANSWER = 15; // Temps de réponse par question
 let time = TIMETOANSWER;
 let countriesToFind;
 let currentCountry;
+let nbCorrectAnswers;
+let nbCurrentAnswer;
 
 inputCapital.addEventListener('keydown', checkAnswer);
 
@@ -17,6 +19,8 @@ const decreaseTime = () => {
     // Vérification du compteur
     if (time <= 0) {
         time = TIMETOANSWER;
+        // TODO: Afficher réponse correcte si incorrect
+        /*inputCapital.value = currentCountry.capital;*/
         updateCountry();
     } else {
         time--;
@@ -27,7 +31,7 @@ function checkAnswer() {
     if (event.key === 'Enter' && isAWord(inputCapital.value)) {
         console.log(currentCountry.capital[0]);
         // Si réponse correcte
-        if (inputCapital.value.toLowerCase() === currentCountry.capital[0].toLowerCase()) {
+        if (inputCapital.value.localeCompare(currentCountry.capital[0], undefined, {sensitivity: 'base'}) === 0) {
             console.log('Ok');
         } else {
             console.log('Ko');
