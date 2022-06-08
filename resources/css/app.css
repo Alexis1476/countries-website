@@ -193,6 +193,7 @@ input, select {
 
 #game-country-name {
     font-size: 2rem;
+    max-width: 20rem;
 }
 
 .game-input {
