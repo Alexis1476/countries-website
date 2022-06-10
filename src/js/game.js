@@ -43,6 +43,8 @@ function checkAnswer() {
         nbCorrectAnswers++;
     } else {
         nbCurrentAnswer++;
+        // TODO: Optimiser
+        document.body.innerHTML += showAnswer('Test');
     }
     updateUI();
 }
@@ -57,6 +59,19 @@ function check() {
     // Si utilisateur appui continuer
     // Reinitialiser minuteur
     // Mettre à jour l'interface
+}
+
+function showAnswer(answer) {
+    return `<div class="container-modal">
+    <div class="modal">
+        <p>Oups! La réponse c'était : ${answer}</p>
+        <button onclick="closeModal()">Continuer</button>
+    </div>
+</div>`;
+}
+
+function closeModal() {
+
 }
 
 function updateUI() {
