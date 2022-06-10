@@ -44,7 +44,7 @@ function checkAnswer() {
     } else {
         nbCurrentAnswer++;
         // TODO: Optimiser
-        document.body.innerHTML += showAnswer('Test');
+        //document.body.innerHTML += showAnswer(currentCountry.capital);
     }
     updateUI();
 }
@@ -62,7 +62,7 @@ function check() {
 }
 
 function showAnswer(answer) {
-    return `<div class="container-modal">
+    return `<div id="container-modal">
     <div class="modal">
         <p>Oups! La réponse c'était : ${answer}</p>
         <button onclick="closeModal()">Continuer</button>
@@ -71,7 +71,8 @@ function showAnswer(answer) {
 }
 
 function closeModal() {
-
+    const modal = document.getElementById('container-modal');
+    modal.remove();
 }
 
 function updateUI() {
