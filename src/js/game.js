@@ -11,10 +11,11 @@ let countriesToFind;
 let currentCountry;
 let nbCorrectAnswers = 0;
 let nbCurrentAnswer = 1;
+const interval = setInterval(decreaseTime, 1000);
 
 inputCapital.addEventListener('keydown', submitAnswer);
 
-const decreaseTime = () => {
+function decreaseTime() {
     // Changement de couleur et de secondes
     timerSpan.innerText = `${time} S`;
     timerSpan.style.color = changeColor(time);
@@ -44,6 +45,18 @@ function checkAnswer() {
         nbCurrentAnswer++;
     }
     updateUI();
+}
+
+function check() {
+    // Vérifier si c'est un mot
+    // Si c'est correct
+    // Popup réponse correcte + btn continuer
+    // Sinon
+    // Popup affichant la réponse correcte + btn continuer
+    // Arreter minuteur
+    // Si utilisateur appui continuer
+    // Reinitialiser minuteur
+    // Mettre à jour l'interface
 }
 
 function updateUI() {
@@ -80,7 +93,6 @@ function changeColor(timer) {
     }
 }
 
-setInterval(decreaseTime, 1000);
 
 async function getCountries(url) {
     try {
