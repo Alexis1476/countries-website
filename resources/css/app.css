@@ -212,3 +212,42 @@ input, select {
 .correct-answers-div > svg {
     margin-right: 0.5rem;
 }
+
+/*Modal style*/
+.container-modal {
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.modal {
+    background: white;
+    width: 20rem;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: var(--border-radius);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.modal > * {
+    margin: 1rem;
+    font-weight: bold;
+}
+
+.modal button {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--main-color);
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
