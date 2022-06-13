@@ -215,6 +215,7 @@ input, select {
 
 /*Modal style*/
 #container-modal {
+    display: none;
     background: rgba(0, 0, 0, 0.2);
     z-index: 10;
     height: 100%;
