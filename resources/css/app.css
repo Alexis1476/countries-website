@@ -57,6 +57,7 @@ main {
     justify-items: center;
     text-align: center;
     margin: 2% 12%;
+    position: relative;
 }
 
 #search-section {
