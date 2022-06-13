@@ -234,7 +234,6 @@ input, select {
     border-radius: var(--border-radius);
     color: black;
     display: flex;
-    flex-direction: column;
     text-align: center;
     align-items: center;
 }
