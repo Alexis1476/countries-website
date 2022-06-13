@@ -11,7 +11,7 @@ let countriesToFind;
 let currentCountry;
 let nbCorrectAnswers = 0;
 let nbCurrentAnswer = 1;
-const interval = setInterval(decreaseTime, 1000);
+let interval = setInterval(decreaseTime, 1000);
 
 inputCapital.addEventListener('keydown', submitAnswer);
 
@@ -41,12 +41,12 @@ function checkAnswer() {
     if (inputCapital.value.localeCompare(currentCountry.capital[0], undefined, {sensitivity: 'base'}) === 0) {
         nbCurrentAnswer++;
         nbCorrectAnswers++;
+        updateUI();
     } else {
         nbCurrentAnswer++;
         // TODO: Optimiser
         showAnswer(currentCountry.capital);
     }
-    updateUI();
 }
 
 function check() {
@@ -66,11 +66,14 @@ function showAnswer(answer) {
     let children = modal.getElementsByTagName('p');
     children[0].innerText = `Oups! La réponse c'était : ${answer}`;
     modal.style.display = 'block';
+    clearInterval(interval);
 }
 
 function closeModal() {
     const modal = document.getElementById('container-modal');
     modal.style.display = 'none';
+    interval = setInterval(decreaseTime, 1000);
+    updateUI();
 }
 
 function updateUI() {
@@ -83,6 +86,11 @@ function updateUI() {
 
 function gameIsOver() {
     if (nbCurrentAnswer === NBANSWERS) {
+        let modal = document.getElementById('container-modal');
+        let children = modal.getElementsByTagName('p');
+        children[0].innerText = `Vous avez répondu ${nbCorrectAnswers} réponses correctes sur ${NBANSWERS}`;
+        modal.style.display = 'block';
+        clearInterval(interval);
         nbCorrectAnswers = 0;
         nbCurrentAnswer = 1;
         time = TIMETOANSWER;
