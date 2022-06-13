@@ -44,7 +44,7 @@ function checkAnswer() {
     } else {
         nbCurrentAnswer++;
         // TODO: Optimiser
-        //document.body.innerHTML += showAnswer(currentCountry.capital);
+        showAnswer(currentCountry.capital);
     }
     updateUI();
 }
@@ -62,17 +62,15 @@ function check() {
 }
 
 function showAnswer(answer) {
-    return `<div id="container-modal">
-    <div class="modal">
-        <p>Oups! La réponse c'était : ${answer}</p>
-        <button onclick="closeModal()">Continuer</button>
-    </div>
-</div>`;
+    let modal = document.getElementById('container-modal');
+    let children = modal.getElementsByTagName('p');
+    children[0].innerText = `Oups! La réponse c'était : ${answer}`;
+    modal.style.display = 'block';
 }
 
 function closeModal() {
     const modal = document.getElementById('container-modal');
-    modal.remove();
+    modal.style.display = 'none';
 }
 
 function updateUI() {
