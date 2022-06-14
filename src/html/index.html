@@ -43,12 +43,12 @@
                 </defs>
             </svg>
             <label for="country-name" style="display: none"></label>
-            <input name="country-name" id="country-name" type="text" placeholder="Nom du pays">
+            <input name="country-name" id="country-name" type="text" placeholder="Nom du pays" onkeydown="search()">
         </div>
         <div id="selects">
             <div class="custom-select">
                 <label for="continent" style="display: none"></label>
-                <select name="continent" id="continent" onchange="updateResults()">
+                <select name="continent" id="continent" onchange="searchAndFilter()">
                     <option value="0">Continent</option>
                     <option value="Americas">Americas</option>
                     <option value="Europe">Europe</option>
@@ -59,7 +59,7 @@
             </div>
             <div class="custom-select">
                 <label for="language" style="display: none"></label>
-                <select name="language" id="language" onchange="updateResults()">
+                <select name="language" id="language" onchange="searchAndFilter()">
                     <option value="0">Language</option>
                     <option value="English">English</option>
                     <option value="French">French</option>
@@ -72,22 +72,11 @@
         </div>
     </section>
     <section id="countries-section">
-        <!--Countries-->
-        <!--
-        <div class="country-card">
-            <img src="https://picsum.photos/200/300" alt="Drapeau">
-            <p class="card-title">France</p>
-            <div class="card-body">
-                <p><strong>Continent : </strong>Afrique</p>
-                <p><strong>Capitale : </strong>Berlin</p>
-                <p><strong>Langues : </strong>Congolais</p>
-                <p><strong>Population : </strong>123</p>
-            </div>
-        </div>
-        -->
+        <!--Section pour l'affichage de résultats-->
     </section>
 </main>
 <footer>© Copyright Alexis Rojas | ETML</footer>
 <script src="../js/app.js"></script>
+<script src="../js/main.js"></script>
 </body>
 </html>
