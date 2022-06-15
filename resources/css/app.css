@@ -220,7 +220,7 @@ input, select {
     margin: .3rem;
     cursor: pointer;
     background: white;
-    flex-basis: 45%;
+    flex-basis: 48%;
 }
 
 .btn-game:hover, .btn-game:focus {
