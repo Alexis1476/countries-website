@@ -85,14 +85,36 @@ function updateCountersUI() {
 
 // Met à jour le pays courant
 function updateCountry() {
+    // Generer les 4 chiffres random des pays
+
+    // Random entre 1 et 4 pour selectionner le bouton de la réponse correcte
+
+    // Change le pays correcte
+
+    // Mettre à jour le texte des réponses
     currentCountry = countries[Math.floor(Math.random() * countries.length)];
     COUNTRY_FLAG.setAttribute('src', currentCountry.flags.png)
     COUNTRY_NAME.innerText = currentCountry.name.common;
 }
 
+function generateListOfUniqueRandom(maxNb, totalNb) {
+    let listOfRandoms = [];
+    let random;
+
+    for (let i = 0; i < totalNb;) {
+        random = Math.floor(Math.random() * maxNb);
+        if (!listOfRandoms.includes(random)) {
+            listOfRandoms.push(random);
+            i++;
+        }
+    }
+    return listOfRandoms;
+}
+
 // Initialise le jeu
 async function initGame() {
-    countries = await requestAPI(URL_ALL);
+    countries = await requestAPI(URL_GAME);
+    console.log(generateListOfUniqueRandom(10, 4));
     updateUI();
 }
 
