@@ -13,7 +13,7 @@ let countries; // Liste des pays
 let timer = QUESTION_TIME; // Minuteur
 let currentCountry; // Pays courant
 let nbOkAnswers = 0; // Nombre de réponses correctes
-let nbCurrentQuestion = 1; // Nombbre de la réponse courante
+let nbCurrentQuestion = 0; // Nombbre de la réponse courante
 let interval = setInterval(decreaseTime, 1000); // Interval qui gère le minuteur
 
 // Décrémente le temps de chaque réponse
@@ -70,16 +70,18 @@ function updateUI() {
 
 // Affiche un modal à la fin du jeu et reinitialise les compteurs
 function gameIsOver() {
-    displayModal(`Vous avez répondu ${nbOkAnswers} réponses correctes sur ${NB_QUESTIONS}`);
+    if (nbOkAnswers === NB_QUESTIONS) displayModal('Felicitations! Vous avez répondu tout juste! Vous êtes très fort!');
+    else displayModal(`Vous avez répondu ${nbOkAnswers} réponses correctes sur ${NB_QUESTIONS}`);
+
     clearInterval(interval);
-    nbCurrentQuestion = 1;
+    nbCurrentQuestion = 0;
     nbOkAnswers = 0;
     timer = QUESTION_TIME;
 }
 
 // Met à jour les compteurs de réponses de l'interface
 function updateCountersUI() {
-    CURRENT_QUESTION_SPAN.innerText = `${nbCurrentQuestion} / ${NB_QUESTIONS}`;
+    CURRENT_QUESTION_SPAN.innerText = `${nbCurrentQuestion + 1} / ${NB_QUESTIONS}`;
     OK_ANSWERS_SPAN.innerText = `${nbOkAnswers} / ${NB_QUESTIONS}`;
 }
 
