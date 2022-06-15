@@ -83,7 +83,7 @@ function updateCountersUI() {
     OK_ANSWERS_SPAN.innerText = `${nbOkAnswers} / ${NB_QUESTIONS}`;
 }
 
-// Met à jour le pays courant
+// Met à jour les pays du QCM
 function updateCountries() {
     // Generer les 4 chiffres random des pays
     let indexCountries = generateListOfUniqueRandom(countries.length, 4);
@@ -105,6 +105,7 @@ function updateCountries() {
     COUNTRY_NAME.innerText = currentCountry.name.common;
 }
 
+// Génère une liste de nombres aléatoires uniques
 function generateListOfUniqueRandom(maxNb, totalNb) {
     let listOfRandoms = [];
 
