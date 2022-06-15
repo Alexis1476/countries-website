@@ -3,11 +3,11 @@ const OK_ANSWERS_SPAN = document.getElementById('correct-answers'); // Span qui 
 const CURRENT_QUESTION_SPAN = document.getElementById('current-answer'); // Span qui affiche la question COURANTE
 const COUNTRY_NAME = document.getElementById('game-country-name'); // Balise contentant le nom du pays
 const COUNTRY_FLAG = document.getElementById('country-flag'); // Img contenant le drapeau du pays
-const CAPITAL_INPUT = document.getElementById('country-capital'); // Champ pour écrire la réponse
 const MODAL = document.getElementById('container-modal'); // Modal qui affiche la réponse correcte
 const MODAL_P = MODAL.getElementsByTagName('p'); // Paragraphe du modal contenant le message à afficher
 const QUESTION_TIME = 15; // Temps de réponse
 const NB_QUESTIONS = 15; // Nombre de questions
+const BTNS_ANSWER = document.getElementsByClassName('btn-game'); // Boutons de réponse
 
 let countries; // Liste des pays
 let timer = QUESTION_TIME; // Minuteur
@@ -25,16 +25,16 @@ function decreaseTime() {
     // Si le timer arrive au bout
     if (timer <= 0) {
         timer = QUESTION_TIME; // Reinitialise le timer
-        checkAnswer();
+        //checkAnswer();
     } else timer--;
 }
 
 // Vérifie la réponse de l'utilisateur
-function checkAnswer() {
+function checkAnswer(chosenButton) {
     nbCurrentQuestion++;
 
     // Si la réponse est correcte sans avoir en compte les caractères accentués
-    if (CAPITAL_INPUT.value.localeCompare(currentCountry.capital[0], undefined, {sensitivity: 'base'}) === 0) {
+    if (chosenButton.innerText === currentCountry.capital[0]) {
         nbOkAnswers++;
         updateUI();
     } else {
@@ -43,11 +43,6 @@ function checkAnswer() {
 
     // Si c'était la dernière question
     if (nbCurrentQuestion === NB_QUESTIONS) gameIsOver();
-}
-
-// Vérifie la réponse de l'utilisateur quand la touche Enter est tapée
-function submitAnswer() {
-    if (event.key === 'Enter' && isAWord(CAPITAL_INPUT.value)) checkAnswer();
 }
 
 // Affiche le modal avec un mesage donné
@@ -66,7 +61,7 @@ function closeModal() {
 
 // Met à jour les éléments de l'interface
 function updateUI() {
-    CAPITAL_INPUT.value = '';
+    //CAPITAL_INPUT.value = '';
     timer = QUESTION_TIME;
     updateCountry();
     updateCountersUI();
