@@ -1,7 +1,7 @@
 const START_URL = 'https://restcountries.com/v3.1/'; // Début de l'URL de l'API
 const URL_ATTRIBUTES = '?fields=name,capital,languages,region,population,flags'; // Paramètres de recherche
 const URL_ATTRIBUTES_FOR_GAME = '?fields=name,capital,flags';
-const URL_ALL = `${START_URL}all${URL_ATTRIBUTES}`; // URL pour récuperer tous les pays
+const URL_ALL = `${START_URL}all${URL_ATTRIBUTES}`; // URL pour récupérer tous les pays
 const URL_GAME = `${START_URL}all${URL_ATTRIBUTES_FOR_GAME}`; // URL pour le jeu
 
 // Fait une requête à une API et retourne les données au format JSON
@@ -14,7 +14,7 @@ async function requestAPI(url) {
     }
 }
 
-// Vérifie si une valeur d'entrée c'est un mot
+// Vérifie si une valeur d'entrée, c'est un mot
 function isAWord(string) {
     return string.match(/^\D+$/);
 }

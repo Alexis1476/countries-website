@@ -13,7 +13,7 @@ let countries; // Liste des pays
 let timer = QUESTION_TIME; // Minuteur
 let currentCountry; // Pays courant
 let nbOkAnswers = 0; // Nombre de réponses correctes
-let nbCurrentQuestion = 0; // Nombbre de la réponse courante
+let nbCurrentQuestion = 0; // Nombre de la réponse courante
 let interval = setInterval(decreaseTime, 1000); // Interval qui gère le minuteur
 
 // Décrémente le temps de chaque réponse
@@ -46,7 +46,7 @@ function checkAnswer(chosenButton) {
     if (nbCurrentQuestion === NB_QUESTIONS) gameIsOver();
 }
 
-// Affiche le modal avec un mesage donné
+// Affiche le modal avec un message donné
 function displayModal(message) {
     MODAL_P[0].innerText = message;
     MODAL.style.display = 'block';
@@ -87,13 +87,13 @@ function updateCountersUI() {
 
 // Met à jour les pays du QCM
 function updateCountries() {
-    // Generer les 4 chiffres random des pays
+    // Générer les 4 chiffres random des pays
     let indexCountries = generateListOfUniqueRandom(countries.length, 4);
 
-    // Random entre 1 et 4 pour selectionner le bouton de la réponse correcte
+    // Random entre 1 et 4 pour sélectionner le bouton de la réponse correcte
     let posCorrectAnswer = Math.floor(Math.random() * 4);
 
-    // Change le pays correcte
+    // Change le pays correct
     currentCountry = countries[indexCountries[posCorrectAnswer]];
     BTNS_ANSWER[posCorrectAnswer].innerText = currentCountry.capital[0];
 

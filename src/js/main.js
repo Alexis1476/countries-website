@@ -3,7 +3,7 @@ const LANGUAGE_SELECT = document.getElementById('language'); // Liste déroulant
 const NAME_INPUT = document.getElementById('country-name'); // Champ du nom du pays
 const COUNTRIES_CONTAINER = document.getElementById('countries-section'); // Section contenant les pays
 
-// Appel la méthode searchAndFilter quand l'utilisateur met un nom dans le champ de recherche et appui Enter
+// Appel la méthode searchAndFilter quand l'utilisateur met un nom dans le champ de recherche et appui 'Entrer'
 async function search() {
     if (event.key === 'Enter') await searchAndFilter();
 }
