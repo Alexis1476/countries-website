@@ -25,13 +25,14 @@ function decreaseTime() {
     // Si le timer arrive au bout
     if (timer <= 0) {
         timer = QUESTION_TIME; // Reinitialise le timer
-        //checkAnswer();
+        checkAnswer(null);
     } else timer--;
 }
 
 // Vérifie la réponse de l'utilisateur
 function checkAnswer(chosenButton) {
     nbCurrentQuestion++;
+    if (chosenButton === null) return displayModal(`Oups! La réponse c'était : ${currentCountry.capital}`);
 
     // Si la réponse est correcte sans avoir en compte les caractères accentués
     if (chosenButton.innerText === currentCountry.capital[0]) {
