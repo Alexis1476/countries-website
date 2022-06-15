@@ -36,7 +36,8 @@
         <h2 id="game-country-name">Pays</h2>
         <div class="input-container game-input">
             <label for="country-capital" style="display: none"></label>
-            <input name="country-capital" id="country-capital" type="text" placeholder="Capitale">
+            <input name="country-capital" id="country-capital" type="text" placeholder="Capitale"
+                   onkeydown="submitAnswer()">
             <svg style="cursor: pointer" onclick="checkAnswer()" width="20" height="20" viewBox="0 0 30 30" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -70,6 +71,7 @@
     </div>
 </main>
 <footer>© Copyright Alexis Rojas | ETML</footer>
+<script src="../js/app.js"></script>
 <script src="../js/game.js"></script>
 </body>
 </html>
