@@ -3,11 +3,11 @@ const OK_ANSWERS_SPAN = document.getElementById('correct-answers'); // Span qui 
 const CURRENT_QUESTION_SPAN = document.getElementById('current-answer'); // Span qui affiche la question COURANTE
 const COUNTRY_NAME = document.getElementById('game-country-name'); // Balise contentant le nom du pays
 const COUNTRY_FLAG = document.getElementById('country-flag'); // Img contenant le drapeau du pays
-const CAPITAL_INPUT = document.getElementById('country-capital'); // Champ pour écrire la réponse
 const MODAL = document.getElementById('container-modal'); // Modal qui affiche la réponse correcte
 const MODAL_P = MODAL.getElementsByTagName('p'); // Paragraphe du modal contenant le message à afficher
 const QUESTION_TIME = 15; // Temps de réponse
 const NB_QUESTIONS = 15; // Nombre de questions
+const BTNS_ANSWER = document.getElementsByClassName('btn-game'); // Boutons de réponse
 
 let countries; // Liste des pays
 let timer = QUESTION_TIME; // Minuteur
@@ -25,16 +25,17 @@ function decreaseTime() {
     // Si le timer arrive au bout
     if (timer <= 0) {
         timer = QUESTION_TIME; // Reinitialise le timer
-        checkAnswer();
+        checkAnswer(null);
     } else timer--;
 }
 
 // Vérifie la réponse de l'utilisateur
-function checkAnswer() {
+function checkAnswer(chosenButton) {
     nbCurrentQuestion++;
+    if (chosenButton === null) return displayModal(`Oups! La réponse c'était : ${currentCountry.capital}`);
 
     // Si la réponse est correcte sans avoir en compte les caractères accentués
-    if (CAPITAL_INPUT.value.localeCompare(currentCountry.capital[0], undefined, {sensitivity: 'base'}) === 0) {
+    if (chosenButton.innerText === currentCountry.capital[0]) {
         nbOkAnswers++;
         updateUI();
     } else {
@@ -43,11 +44,6 @@ function checkAnswer() {
 
     // Si c'était la dernière question
     if (nbCurrentQuestion === NB_QUESTIONS) gameIsOver();
-}
-
-// Vérifie la réponse de l'utilisateur quand la touche Enter est tapée
-function submitAnswer() {
-    if (event.key === 'Enter' && isAWord(CAPITAL_INPUT.value)) checkAnswer();
 }
 
 // Affiche le modal avec un mesage donné
@@ -66,9 +62,9 @@ function closeModal() {
 
 // Met à jour les éléments de l'interface
 function updateUI() {
-    CAPITAL_INPUT.value = '';
+    //CAPITAL_INPUT.value = '';
     timer = QUESTION_TIME;
-    updateCountry();
+    updateCountries();
     updateCountersUI();
 }
 
@@ -88,15 +84,43 @@ function updateCountersUI() {
 }
 
 // Met à jour le pays courant
-function updateCountry() {
-    currentCountry = countries[Math.floor(Math.random() * countries.length)];
+function updateCountries() {
+    // Generer les 4 chiffres random des pays
+    let indexCountries = generateListOfUniqueRandom(countries.length, 4);
+
+    // Random entre 1 et 4 pour selectionner le bouton de la réponse correcte
+    let posCorrectAnswer = Math.floor(Math.random() * 4);
+
+    // Change le pays correcte
+    currentCountry = countries[indexCountries[posCorrectAnswer]];
+    BTNS_ANSWER[posCorrectAnswer].innerText = currentCountry.capital[0];
+
+    // Mettre à jour le texte des réponses
+    for (let i = 0; i < indexCountries.length; i++) {
+        if (posCorrectAnswer === i) continue; // Si l'index est égal à la position de la réponse correcte
+        BTNS_ANSWER[i].innerText = countries[indexCountries[i]].capital[0];
+    }
+
     COUNTRY_FLAG.setAttribute('src', currentCountry.flags.png)
     COUNTRY_NAME.innerText = currentCountry.name.common;
 }
 
+function generateListOfUniqueRandom(maxNb, totalNb) {
+    let listOfRandoms = [];
+
+    for (let i = 0; i < totalNb;) {
+        let random = Math.floor(Math.random() * maxNb);
+        if (!listOfRandoms.includes(random)) {
+            listOfRandoms.push(random);
+            i++;
+        }
+    }
+    return listOfRandoms;
+}
+
 // Initialise le jeu
 async function initGame() {
-    countries = await requestAPI(URL_ALL);
+    countries = await requestAPI(URL_GAME);
     updateUI();
 }
 
