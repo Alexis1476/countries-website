@@ -64,7 +64,7 @@ function closeModal() {
 function updateUI() {
     //CAPITAL_INPUT.value = '';
     timer = QUESTION_TIME;
-    updateCountry();
+    updateCountries();
     updateCountersUI();
 }
 
@@ -84,25 +84,32 @@ function updateCountersUI() {
 }
 
 // Met à jour le pays courant
-function updateCountry() {
+function updateCountries() {
     // Generer les 4 chiffres random des pays
+    let indexCountries = generateListOfUniqueRandom(countries.length, 4);
 
     // Random entre 1 et 4 pour selectionner le bouton de la réponse correcte
+    let posCorrectAnswer = Math.floor(Math.random() * 4);
 
     // Change le pays correcte
+    currentCountry = countries[indexCountries[posCorrectAnswer]];
+    BTNS_ANSWER[posCorrectAnswer].innerText = currentCountry.capital[0];
 
     // Mettre à jour le texte des réponses
-    currentCountry = countries[Math.floor(Math.random() * countries.length)];
+    for (let i = 0; i < indexCountries.length; i++) {
+        if (posCorrectAnswer === i) continue; // Si l'index est égal à la position de la réponse correcte
+        BTNS_ANSWER[i].innerText = countries[indexCountries[i]].capital[0];
+    }
+
     COUNTRY_FLAG.setAttribute('src', currentCountry.flags.png)
     COUNTRY_NAME.innerText = currentCountry.name.common;
 }
 
 function generateListOfUniqueRandom(maxNb, totalNb) {
     let listOfRandoms = [];
-    let random;
 
     for (let i = 0; i < totalNb;) {
-        random = Math.floor(Math.random() * maxNb);
+        let random = Math.floor(Math.random() * maxNb);
         if (!listOfRandoms.includes(random)) {
             listOfRandoms.push(random);
             i++;
@@ -114,7 +121,6 @@ function generateListOfUniqueRandom(maxNb, totalNb) {
 // Initialise le jeu
 async function initGame() {
     countries = await requestAPI(URL_GAME);
-    console.log(generateListOfUniqueRandom(10, 4));
     updateUI();
 }
 
