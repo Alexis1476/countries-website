@@ -26,5 +26,5 @@ function searchByTranslation(translation) {
 
 // Retourne l'URL qui permet de demander à l'API par nom du pays complet et en anglais
 function searchByCountryFullName(name) {
-    return `${START_URL}name/${name}${URL_ATTRIBUTES},?fullText=true`;
+    return `${START_URL}name/${name}?fullText=true`;
 }
