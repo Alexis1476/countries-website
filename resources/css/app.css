@@ -1,0 +1,337 @@
+:root {
+    --main-color: linear-gradient(90deg, rgba(23, 156, 214, 1) 0%, rgba(44, 201, 163, 1) 100%);
+    --border-radius: 0.8rem;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    background: rgb(23, 156, 214);
+    background: var(--main-color);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1.5rem;
+}
+
+nav li {
+    display: inline-block;
+    list-style: none;
+    margin-right: 3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+nav a {
+    color: inherit;
+    text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+    transition: text-decoration-color 300ms;
+}
+
+.is-active {
+    text-decoration: underline 0.15em;
+}
+
+nav a:hover {
+    text-decoration-color: inherit;
+}
+
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    text-align: center;
+    margin: 2% 12%;
+    position: relative;
+}
+
+#search-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-container, .custom-select {
+    background: white;
+    height: 2rem;
+    padding: 0 .8rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.8rem;
+    position: relative;
+    margin: 0 1rem;
+    justify-content: space-between;
+}
+
+.input-container input {
+    margin-left: 1rem;
+    width: 100%;
+}
+
+.input-container svg {
+    position: relative;
+}
+
+#selects {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+input, select {
+    font-family: Montserrat, sans-serif;
+    border-radius: var(--border-radius);
+    border: none;
+    height: 90%;
+}
+
+/* Card-Style */
+#countries-section {
+    display: flex;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    max-height: 100%;
+    height: 10px;
+    overflow-y: auto;
+}
+
+#countries-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+#countries-section::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+}
+
+.country-card {
+    min-width: 17rem;
+    max-height: 23rem;
+    max-width: 17rem;
+    background: white;
+    color: black;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 10px -2px rgba(0, 0, 0, 0.8);
+    margin: 0 0 1em 1em;
+}
+
+.country-card img {
+    width: 100%;
+    min-width: 100%;
+    height: 40%;
+    box-shadow: 0 3px 2px 0 gray;
+}
+
+.card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    background: var(--main-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.card-body {
+    margin: 0 1.5rem;
+    flex-grow: 1;
+}
+
+.card-body p {
+    margin: .6rem 0;
+    font-size: 0.9rem;
+}
+
+/*Style game*/
+.game-card {
+    margin: auto;
+    height: 100%;
+    text-align: center;
+    font-weight: 800;
+}
+
+.game-card > * {
+    margin: 1em 0;
+}
+
+.title-game {
+    font-size: xxx-large;
+}
+
+#country-flag {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 10px -2px rgba(0, 0, 0, 0.8);
+    height: 13rem;
+    max-width: 20rem;
+}
+
+#counters {
+    display: flex;
+    justify-content: space-between;
+}
+
+#game-country-name {
+    font-size: 2rem;
+    text-align: center;
+    max-width: 30rem;
+}
+
+
+.game-input {
+    height: 3rem;
+}
+
+#game-btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 30rem;
+    margin: 0;
+}
+
+.btn-game {
+    border: none;
+    border-radius: var(--border-radius);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    padding: .3rem 1.5rem;
+    margin: .3rem;
+    cursor: pointer;
+    background: white;
+    flex-basis: 46%;
+}
+
+.btn-game:hover, .btn-game:focus {
+    animation: ex 1s ease;
+    transform: scaleX(1.1) scaleY(1.1);
+}
+
+@keyframes ex {
+    0% {
+        transform: scaleX(1) scaleY(1);
+    }
+    100% {
+        transform: scaleX(1.1) scaleY(1.1);
+    }
+}
+
+.game-input input {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.correct-answers-div {
+    display: flex;
+}
+
+.correct-answers-div > svg {
+    margin-right: 0.5rem;
+}
+
+/*Modal style*/
+#container-modal {
+    display: none;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.modal {
+    background: white;
+    width: 20rem;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: var(--border-radius);
+    color: black;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.modal > * {
+    margin: 1rem;
+    font-weight: bold;
+}
+
+.modal button {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--main-color);
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+/*Modal chaque pays*/
+
+.btn-title {
+    cursor: pointer;
+    border: none;
+    margin: 0.3rem;
+}
+
+.modal-bg {
+    background: rgba(0, 0, 0, 0.14);
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    display: none;
+}
+
+.modal-body {
+    background: white;
+    position: relative;
+    width: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: var(--border-radius);
+    color: black;
+    display: flex;
+    max-width: 40rem;
+    align-items: center;
+}
+
+.modal-body > * {
+    margin: 1rem;
+}
+
+.flag {
+    margin: 0;
+    width: 100%;
+}
+
+.country-info {
+    display: flex;
+    flex-direction: column;
+}
