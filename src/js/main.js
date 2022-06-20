@@ -7,7 +7,6 @@ const COUNTRY_MODAL = document.getElementById('country-modal'); // Modal détail
 // Affiche le modal avec les données du pays
 async function showCountryDetails(countryName) {
     let countries = await requestAPI(searchByCountryFullName(countryName.innerText));
-    console.log(countries[0]);
     updateCountryModal(countries[0]).then();
 }
 
