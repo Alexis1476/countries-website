@@ -2,6 +2,46 @@ const CONTINENT_SELECT = document.getElementById('continent'); // Liste déroula
 const LANGUAGE_SELECT = document.getElementById('language'); // Liste déroulante des langues
 const NAME_INPUT = document.getElementById('country-name'); // Champ du nom du pays
 const COUNTRIES_CONTAINER = document.getElementById('countries-section'); // Section contenant les pays
+const COUNTRY_MODAL = document.getElementById('country-modal'); // Modal détails du pas
+
+async function showCountryDetails(countryName) {
+    let countries = await requestAPI(searchByCountryFullName(countryName.innerText));
+    console.log(countries[0]);
+    updateCountryModal(countries[0]);
+}
+
+async function getCountryNameByCode(code) {
+    return await requestAPI(`${START_URL}alpha/${code}`)
+}
+
+async function updateCountryModal(country) {
+    let countryCurrency = Object.keys(country.currencies)[0];
+    let borders = '';
+
+    // Si le pays a des frontières
+    if (country.borders !== undefined) {
+        for (let index in country.borders) {
+            let border = await getCountryNameByCode(country.borders[index]);
+            borders += `-${border[0].name.common} `;
+        }
+    }
+
+    COUNTRY_MODAL.innerHTML = `<div class="modal-body">
+        <div class="card-left">
+            <img class="flag" src="${country.flags.png}" alt="Flag">
+            <p class="card-title">${country.name.common}</p>
+        </div>
+        <div class="country-info">
+            <p><strong>Continent : </strong>${country.region}</p>
+            <p><strong>Capital : </strong>${country.capital[0]}</p>
+            <p><strong>Langue : </strong>${languagesToString(country.languages)}</p>
+            <p><strong>Population : </strong>${country.population.toLocaleString()}</p>
+            <p><strong>Monnaie : </strong>${countryCurrency + ' : ' + country.currencies[countryCurrency].name}</p>
+            <p><strong>Frontières : </strong>${borders}</p>
+        </div>
+    </div>`;
+    COUNTRY_MODAL.style.display = 'block';
+}
 
 // Appel la méthode searchAndFilter quand l'utilisateur met un nom dans le champ de recherche et appui 'Entrer'
 async function search() {
@@ -26,6 +66,16 @@ async function searchAndFilter() {
     }
 }
 
+// Retourne la liste de langues sous forme de chaine de caractères
+function languagesToString(countryLanguages) {
+    let languages = '';
+    // Concatenation des langues
+    for (let key in countryLanguages) {
+        languages += `-${countryLanguages[key]} `;
+    }
+    return languages;
+}
+
 // Met à jour les pays affichés
 function updateUI(countries) {
     let html = '';
@@ -36,18 +86,13 @@ function updateUI(countries) {
     });
 
     countries.forEach(country => {
-        let languages = '';
-        // Concatenation des langues
-        for (let key in country.languages) {
-            languages += `-${country.languages[key]} `;
-        }
         let htmlSegment = `<div class="country-card">
             <img src="${country.flags.png}" alt="Drapeau">
-            <p class="card-title">${country.name.common}</p>
+            <p onclick="showCountryDetails(this)" class="card-title btn-title">${country.name.common}</p>
             <div class="card-body">
                 <p><strong>Continent : </strong>${country.region}</p>
                 <p><strong>Capitale : </strong>${country.capital}</p>
-                <p><strong>Langues : </strong>${languages}</p>
+                <p><strong>Langues : </strong>${languagesToString(country.languages)}</p>
                 <p><strong>Population : </strong>${country.population.toLocaleString()}</p>
             </div>
         </div>`;
