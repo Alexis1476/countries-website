@@ -22,12 +22,13 @@ Il est accesible en appuyant sur le bouton "Jeu" de la barre de nav.
 
 - Le nom ainsi que le drapeau du pays sont affichés
 - 4 réponses sont proposées
-- Il y a 15 secondes pour répondre
-- Il y a 15 questions au total
+- 15 questions au total
+- 15 secondes par question
 
 ![img_2.png](img/gamePage.png)
 
 ### 2.1 Modal du jeu
 
-Quand le joueur réponde mal une question, une alerte affiche la réponse correcte  
+Quand le joueur selectionne une capitale incorrecte, 
+un modal est affiché contenant la réponse correcte
 ![img_2.png](img/alertGame.png)
