@@ -225,7 +225,17 @@ input, select {
 }
 
 .btn-game:hover, .btn-game:focus {
-    transform: rotate(1deg);
+    animation: ex 1s ease;
+    transform: scaleX(1.1) scaleY(1.1);
+}
+
+@keyframes ex {
+    0% {
+        transform: scaleX(1) scaleY(1);
+    }
+    100% {
+        transform: scaleX(1.1) scaleY(1.1);
+    }
 }
 
 .game-input input {
