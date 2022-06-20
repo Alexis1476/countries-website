@@ -144,6 +144,7 @@ input, select {
 }
 
 .card-title {
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.5em;
     text-align: center;
     font-weight: bold;
@@ -283,6 +284,8 @@ input, select {
 
 .btn-title {
     cursor: pointer;
+    border: none;
+    margin: 0.3rem;
 }
 
 .modal-bg {

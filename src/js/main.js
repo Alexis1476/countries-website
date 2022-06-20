@@ -94,7 +94,7 @@ function updateUI(countries) {
     countries.forEach(country => {
         let htmlSegment = `<div class="country-card">
             <img src="${country.flags.png}" alt="Drapeau">
-            <p onclick="showCountryDetails(this)" class="card-title btn-title">${country.name.common}</p>
+            <button onclick="showCountryDetails(this)" class="card-title btn-title">${country.name.common}</button>
             <div class="card-body">
                 <p><strong>Continent : </strong>${country.region}</p>
                 <p><strong>Capitale : </strong>${country.capital}</p>
