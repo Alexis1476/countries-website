@@ -4,16 +4,19 @@ const NAME_INPUT = document.getElementById('country-name'); // Champ du nom du p
 const COUNTRIES_CONTAINER = document.getElementById('countries-section'); // Section contenant les pays
 const COUNTRY_MODAL = document.getElementById('country-modal'); // Modal détails du pas
 
+// Affiche le modal avec les données du pays
 async function showCountryDetails(countryName) {
     let countries = await requestAPI(searchByCountryFullName(countryName.innerText));
     console.log(countries[0]);
-    updateCountryModal(countries[0]);
+    updateCountryModal(countries[0]).then();
 }
 
+// Recherche un pays par son code
 async function getCountryNameByCode(code) {
     return await requestAPI(`${START_URL}alpha/${code}`)
 }
 
+// Met à jour les informations du modal et l'affiche
 async function updateCountryModal(country) {
     let countryCurrency = Object.keys(country.currencies)[0];
     let borders = '';
@@ -41,6 +44,9 @@ async function updateCountryModal(country) {
         </div>
     </div>`;
     COUNTRY_MODAL.style.display = 'block';
+    COUNTRY_MODAL.addEventListener('click', function (e) {
+        if (e.target === COUNTRY_MODAL) COUNTRY_MODAL.style.display = 'none';
+    });
 }
 
 // Appel la méthode searchAndFilter quand l'utilisateur met un nom dans le champ de recherche et appui 'Entrer'
