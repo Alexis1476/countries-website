@@ -278,3 +278,52 @@ input, select {
     border-radius: var(--border-radius);
     cursor: pointer;
 }
+
+/*Modal chaque pays*/
+
+.btn-title {
+    cursor: pointer;
+}
+
+.modal-bg {
+    background: rgba(0, 0, 0, 0.14);
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    display: none;
+}
+
+.modal-body {
+    background: white;
+    position: relative;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: var(--border-radius);
+    color: black;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.modal-body > * {
+    margin: 1rem;
+}
+
+.flag {
+    margin: 0;
+    width: 100%;
+}
+
+.country-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-left {
+    margin-left: auto;
+    margin-right: auto;
+}
