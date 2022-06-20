@@ -1,37 +1,33 @@
-## Welcome to GitHub Pages
+# Countries website
 
-You can use the [editor on GitHub](https://github.com/Alexis1476/countries-website/edit/dev/README.md) to maintain and preview the content for your website in Markdown files.
+## 1. Page d'accueil
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+La page d'accueil affiche la liste de tous les pays ainsi
+qu'une barre de recherche où on peut rechercher un pays
+par son nom dans n'importe quelle langue.  
+Il y a également deux listes déroulantes pour filtrer les résultats
+par continent et par langue.
+![img_1.png](img/homePage.png)
 
-### Markdown
+### 1.1 Modal détails du pays
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Quand on clique sur le nom d'un pays, un modal est affiché contenant
+plus d'informations du pays.
+![img.png](img/modalCountry.png)
 
-```markdown
-Syntax highlighted code block
+## 2. Jeu des capitales
 
-# Header 1
-## Header 2
-### Header 3
+Un jeu pour déviner les capitales est également présent.  
+Il est accesible en appuyant sur le bouton "Jeu" de la barre de nav.
 
-- Bulleted
-- List
+- Le nom ainsi que le drapeau du pays sont affichés
+- 4 réponses sont proposées
+- Il y a 15 secondes pour répondre
+- Il y a 15 questions au total
 
-1. Numbered
-2. List
+![img_2.png](img/gamePage.png)
 
-**Bold** and _Italic_ and `Code` text
+### 2.1 Modal du jeu
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Alexis1476/countries-website/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Quand le joueur réponde mal une question, une alerte affiche la réponse correcte  
+![img_2.png](img/alertGame.png)
