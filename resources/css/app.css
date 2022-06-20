@@ -301,15 +301,15 @@ input, select {
 .modal-body {
     background: white;
     position: relative;
-    width: 50%;
+    width: 70%;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     border-radius: var(--border-radius);
     color: black;
     display: flex;
+    max-width: 40rem;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .modal-body > * {
@@ -324,9 +324,4 @@ input, select {
 .country-info {
     display: flex;
     flex-direction: column;
-}
-
-.card-left {
-    margin-left: auto;
-    margin-right: auto;
 }
