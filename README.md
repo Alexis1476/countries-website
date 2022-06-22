@@ -8,7 +8,7 @@ par son nom dans n'importe quelle langue.
 Il y a également deux listes déroulantes pour filtrer les résultats
 par continent et par langue.
 ![img_1.png](img/homePage.png)
-
+ 
 ### 1.1 Modal détails du pays
 
 Quand on clique sur le nom d'un pays, un modal est affiché contenant
